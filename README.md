@@ -1,6 +1,6 @@
-#Finance European Option Calculator
+# European Option Calculator
 
-Option Calculator to get price of call or put options using Black Scholes Formula
+### Option Calculator to get price of call or put options using Black Scholes Model and N-Step Binomial Model 
 
 ![showcase](Assets/showcase.gif)
 
