@@ -26,7 +26,7 @@ def index(request):
     return render(request, 'index.html')
 
 
-def european(request, S, sigma, r, T, K, call_put):
+def blackScholes(request, S, sigma, r, T, K, call_put):
     c = get_european(int(S), float(sigma), float(r), float(T), float(K), str(call_put))
     r = HttpResponse(str(c))
     return r

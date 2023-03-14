@@ -25,13 +25,14 @@
                 }
 
                 var S = document.getElementById("S").value;
-                var sigma = document.getElementById("sigma").value;
-                var r = document.getElementById("r").value;
-                var T = document.getElementById("T").value;
                 var K = document.getElementById("K").value;
+                var T = document.getElementById("T").value;
+                var r = document.getElementById("r").value;
+                var sigma = document.getElementById("sigma").value;
+                var N = document.getElementById("N").value;
                 var call_put = document.getElementById("call_put").value;
 
-                xmlhttp.open("GET", "/blackScholes/" + "S" + S + "sigma" + sigma + "r" + r + "T" + T + "K" + K + "call_put" + call_put + "/" , true);
+                xmlhttp.open("GET", "/binomial/" + "S" + S + "K" + K + "T" + T + "r" + r + "sigma" + sigma + "N" + N + "call_put" + call_put + "/" , true);
                 xmlhttp.setRequestHeader("X-requested-with", "XMLHttpRequest");
                 xmlhttp.send();
             }
@@ -47,12 +48,12 @@
             <div class="row">
                 <div class="col-md-3">
                     <ul class="nav nav-pills nav-stacked">
-                        <li role="presentation" class="active"><a href="/blackScholes_index/">Black Scholes</a></li>
-                        <li role="presentation"><a href="/binomial_index/">Binomial Model</a></li>
+                        <li role="presentation"><a href="/blackScholes_index/">Black Scholes</a></li>
+                        <li role="presentation" class="active"><a href="/binomial_index/">Binomial Model</a></li>
                     </ul>
                 </div>
                 <div id="myDiv" class="col-md-9">
-                    <h3>Input parameters for Black-Scholes formula: </h3>
+                    <h3>Input parameters for n-step Binomial Model: </h3>
                     <div>
                         <table class="table">
                             <tr>
@@ -60,20 +61,24 @@
                                 <td><input id="S" value="100"><br></td>
                             </tr>
                             <tr>
-                                <td>Sigma </td>
-                                <td><input id="sigma" value="0.2"><br></td>
+                                <td>Strike Price(K)</td>
+                                <td><input id="K" value="105"><br></td>
                             </tr>
                             <tr>
-                                <td>Interest rate(r): </td>
-                                <td><input id="r" value="0.01"><br></td>
+                                <td>Time period(T): </td>
+                                <td><input id="T" value="0.5"><br></td>
                             </tr>
                             <tr>
-                                <td>T: </td>
-                                <td><input id="T" value="3"><br></td>
+                                <td>r(continous risk free interest rate): </td>
+                                <td><input id="r" value="0.05"><br></td>
                             </tr>
                             <tr>
-                                <td>Strike Price(K): </td>
-                                <td><input id="K" value="100"><br></td>
+                                <td>sigma: </td>
+                                <td><input id="sigma" value="0.4"><br></td>
+                            </tr>
+                            <tr>
+                                <td>N(Number of steps): </td>
+                                <td><input id="N" value="4"><br></td>
                             </tr>
                             <tr>
                                 <td>Call(C) or Put(P): </td>
@@ -81,7 +86,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <button type="button" class="btn btn-primary" onclick="ajax_request()">Calculate</button>
+                                    <button type="button" class="btn btn-primary" onclick="ajax_request()">Calculate Call Option</button>
                                 </td>
                                 <td><span id="result"></span></td>
                             </tr>
